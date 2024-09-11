@@ -2,6 +2,7 @@ package org.br.mineradora.utils;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
+import org.br.mineradora.dto.OpportunityDTO;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
