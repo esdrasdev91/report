@@ -6,19 +6,16 @@ import lombok.Data;
 import lombok.extern.jackson.Jacksonized;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Builder
 @Data
 @AllArgsConstructor
 @Jacksonized
-public class OpportunityDTO {
+public class QuotationDTO {
 
-    private Long proposalId;
+    private Date date;
 
-    private String customer;
-
-    private BigDecimal priceTonne;
-
-    private BigDecimal lastDollarQuotation;
+    private BigDecimal currencyPrice;
 
 }
