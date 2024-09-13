@@ -11,6 +11,7 @@ import org.br.mineradora.repository.OpportunityRepository;
 import org.br.mineradora.repository.QuotationRepository;
 
 import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -51,7 +52,18 @@ public class OpportunityServiceImpl  implements OpportunityService{
     }
 
     @Override
-    public ByteArrayInputStream generateOpportunityReport() {
+    public ByteArrayInputStream generateCSVOpportunityReport() {
+
+        List<OpportunityDTO> opportunityList = new ArrayList<>();
+        opportunityRepository.findAll().list().forEach(item -> {
+            opportunityList.add(OpportunityDTO.builder()
+                    .proposalId(item.getProposalId())
+                    .customer(item.getCustomer())
+                    .priceTonne(item.getPriceTonne())
+                    .lastDollarQuotation(item.getLastDollarQuotation())
+                    .build());
+        });
+
         return null;
     }
 }
