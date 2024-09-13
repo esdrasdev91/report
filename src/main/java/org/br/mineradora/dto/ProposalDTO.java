@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.extern.jackson.Jacksonized;
+import java.math.BigDecimal;
 
 @Builder
 @Data
@@ -15,6 +16,6 @@ public class ProposalDTO {
 
     private String customer;
 
-    private String priceTonne;
+    private BigDecimal priceTonne;
 
 }
