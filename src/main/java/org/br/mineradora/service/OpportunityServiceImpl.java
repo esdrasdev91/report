@@ -10,6 +10,7 @@ import org.br.mineradora.entity.QuotationEntity;
 import org.br.mineradora.repository.OpportunityRepository;
 import org.br.mineradora.repository.QuotationRepository;
 
+import java.io.ByteArrayInputStream;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -47,5 +48,10 @@ public class OpportunityServiceImpl  implements OpportunityService{
     @Override
     public List<OpportunityDTO> generateOpportunityData() {
         return List.of();
+    }
+
+    @Override
+    public ByteArrayInputStream generateOpportunityReport() {
+        return null;
     }
 }
