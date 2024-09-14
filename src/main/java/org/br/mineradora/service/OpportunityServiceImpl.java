@@ -44,6 +44,11 @@ public class OpportunityServiceImpl  implements OpportunityService{
     @Override
     public void saveQuotation(QuotationDTO quotationDTO) {
 
+        QuotationEntity createdQuotation = new QuotationEntity();
+        createdQuotation.setDate(new Date());
+        createdQuotation.setCurrencyPrice(quotationDTO.getCurrencyPrice());
+
+        quotationRepository.persist(createdQuotation);
     }
 
     @Override
