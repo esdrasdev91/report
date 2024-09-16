@@ -2,6 +2,7 @@ package org.br.mineradora.service;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import org.br.mineradora.dto.OpportunityDTO;
 import org.br.mineradora.dto.ProposalDTO;
 import org.br.mineradora.dto.QuotationDTO;
@@ -42,6 +43,7 @@ public class OpportunityServiceImpl  implements OpportunityService{
     }
 
     @Override
+    @Transactional
     public void saveQuotation(QuotationDTO quotationDTO) {
 
         QuotationEntity createdQuotation = new QuotationEntity();
