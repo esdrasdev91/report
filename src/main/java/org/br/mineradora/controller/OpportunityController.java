@@ -5,11 +5,15 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.br.mineradora.service.OpportunityService;
+import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import java.util.Date;
 
 @Path("/api/opportunity")
 public class OpportunityController {
+
+    @Inject
+    JsonWebToken token;
 
     @Inject
     OpportunityService opportunityService;
