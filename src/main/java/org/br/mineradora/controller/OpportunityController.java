@@ -1,13 +1,13 @@
 package org.br.mineradora.controller;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
+import org.br.mineradora.dto.OpportunityDTO;
 import org.br.mineradora.service.OpportunityService;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 
-import java.util.Date;
+import java.util.List;
 
 @Path("/api/opportunity")
 public class OpportunityController {
@@ -19,17 +19,10 @@ public class OpportunityController {
     OpportunityService opportunityService;
 
     @GET
-    @Path("/report")
-    @Produces(MediaType.APPLICATION_OCTET_STREAM)
-    public Response generateReport() {
-        try {
-            return Response.ok(opportunityService.generateCSVOpportunityReport(),
-                            MediaType.APPLICATION_OCTET_STREAM)
-                    .header("content-disposition", "attachment; filename=opportunity.csv = " + new Date() + "-- Oportunidades-Venda.csv")
-                    .build();
-        } catch (ServerErrorException errorException) {
-            return Response.serverError().build();
-        }
+    @Path("/data")
+    @RolesAllowed({"user", "manager"})
+    public List<OpportunityDTO> generateReport() {
+        return opportunityService.generateOpportunityData();
     }
 
 }
