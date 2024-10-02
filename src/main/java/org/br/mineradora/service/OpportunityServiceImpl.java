@@ -1,5 +1,6 @@
 package org.br.mineradora.service;
 
+import io.opentelemetry.instrumentation.annotations.WithSpan;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -27,6 +28,7 @@ public class OpportunityServiceImpl  implements OpportunityService{
     OpportunityRepository opportunityRepository;
 
     @Override
+    @WithSpan
     public void buildOpportunity(ProposalDTO proposalDTO) {
 
         List<QuotationEntity> quotationEntities = quotationRepository.findAll().list();
@@ -43,6 +45,7 @@ public class OpportunityServiceImpl  implements OpportunityService{
     }
 
     @Override
+    @WithSpan
     @Transactional
     public void saveQuotation(QuotationDTO quotationDTO) {
 
@@ -54,6 +57,7 @@ public class OpportunityServiceImpl  implements OpportunityService{
     }
 
     @Override
+    @WithSpan
     public List<OpportunityDTO> generateOpportunityData() {
 
         List<OpportunityDTO> opportunities = new ArrayList<>();
